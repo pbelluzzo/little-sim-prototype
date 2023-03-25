@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4a2b653a212e04a920187e6a4cd2cf, type: 3}
   m_Name: CharacterMovementConfigs
   m_EditorClassIdentifier: 
-  MovementSpeed: 84
+  MovementSpeed: 132
