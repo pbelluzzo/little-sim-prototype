@@ -28,7 +28,7 @@ namespace LittleSimPrototype.CharacterControl
             Vector3 invertedScale = new Vector3(-_initialScale.x, _initialScale.y, _initialScale.z);
 
             transform.localScale = isWalkingLeft ? _initialScale : invertedScale;
-            _animator.SetTrigger(_walkAnimatorParameter);
+            SetWalkAnim();
         }
 
         private void SetIdleAnim()
