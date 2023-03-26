@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 42737
+  controlID: 4095
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -83,7 +83,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 0
+    m_HSlider: 1
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -97,7 +97,7 @@ MonoBehaviour:
       y: 21
       width: 716
       height: 594
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 1.3829876, y: 1.3829877}
     m_Translation: {x: 358, y: 297}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -105,10 +105,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -358
-      y: -297
-      width: 716
-      height: 594
+      x: -258.85986
+      y: -214.75244
+      width: 517.7197
+      height: 429.50488
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 716, y: 615}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 42738
+  controlID: 4096
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 42739
+  controlID: 4097
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,7 +227,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: de3afcff4076fcff5283fdff4a9afdff2ad9fdffc4e5fdff0ec0feffacc7feff82f2feffc8a5ffff46faffff7efaffff82faffff26fbffff0ad3000010d3000026d30000d2140100b8150100382c0100642c0100
+      m_ExpandedIDs: 02fbffff4e700000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -526,9 +526,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.32752213, y: 0.21531385, z: -0.02096253}
+    m_Target: {x: -0.9108041, y: 1.040174, z: -0.027053114}
     speed: 2
-    m_Value: {x: 0.32752213, y: 0.21531385, z: -0.02096253}
+    m_Value: {x: -0.9108041, y: 1.040174, z: -0.027053114}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -579,9 +579,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.3085375
+    m_Target: 3.3407564
     speed: 2
-    m_Value: 3.3085375
+    m_Value: 3.3407564
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -788,9 +788,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1231
+    x: 1255
     y: 81
-    width: 740
+    width: 716
     height: 615
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -820,9 +820,9 @@ MonoBehaviour:
     m_SearchString: 
   m_ActionsTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2cd75a3c
-    m_LastClickedID: 1012586284
-    m_ExpandedIDs: 25850f887b992e02fee9c42d
+    m_SelectedIDs: 1cb3c938
+    m_LastClickedID: 952742684
+    m_ExpandedIDs: 25850f887b992e02fee9c42d4ff51231
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -852,6 +852,9 @@ MonoBehaviour:
       - itemId: 656259478
         selectedIndex: 0
         scroll: {x: 0, y: 0}
+      - itemId: 403810634
+        selectedIndex: 0
+        scroll: {x: 0, y: 0}
     m_ManualPathEditMode: 0
   m_ActionAssetManager:
     m_AssetObjectForEditing: {fileID: 0}
@@ -864,15 +867,19 @@ MonoBehaviour:
       \"Value\",\n                    \"id\": \"5e273e5b-0257-404a-82a4-fb62ab1d99f4\",\n                   
       \"expectedControlType\": \"Vector2\",\n                    \"processors\":
       \"\",\n                    \"interactions\": \"\",\n                    \"initialStateCheck\":
-      true\n                }\n            ],\n            \"bindings\": [\n               
-      {\n                    \"name\": \"2D Vector\",\n                    \"id\":
-      \"48055d66-40f2-4c17-868b-0b1aec7fdd33\",\n                    \"path\": \"2DVector\",\n                   
-      \"interactions\": \"\",\n                    \"processors\": \"\",\n                   
-      \"groups\": \"\",\n                    \"action\": \"WalkAction\",\n                   
-      \"isComposite\": true,\n                    \"isPartOfComposite\": false\n               
-      },\n                {\n                    \"name\": \"up\",\n                   
-      \"id\": \"0ad12173-dbd6-4cf2-a5e6-f086f1d6d145\",\n                    \"path\":
-      \"<Keyboard>/w\",\n                    \"interactions\": \"\",\n                   
+      true\n                },\n                {\n                    \"name\":
+      \"InteractAction\",\n                    \"type\": \"Button\",\n                   
+      \"id\": \"9c376b3d-f99c-4019-905e-867f7e39ba92\",\n                    \"expectedControlType\":
+      \"Button\",\n                    \"processors\": \"\",\n                   
+      \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
+      }\n            ],\n            \"bindings\": [\n                {\n                   
+      \"name\": \"2D Vector\",\n                    \"id\": \"48055d66-40f2-4c17-868b-0b1aec7fdd33\",\n                   
+      \"path\": \"2DVector\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"WalkAction\",\n                    \"isComposite\": true,\n                   
+      \"isPartOfComposite\": false\n                },\n                {\n                   
+      \"name\": \"up\",\n                    \"id\": \"0ad12173-dbd6-4cf2-a5e6-f086f1d6d145\",\n                   
+      \"path\": \"<Keyboard>/w\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"\",\n                   
       \"action\": \"WalkAction\",\n                    \"isComposite\": false,\n                   
       \"isPartOfComposite\": true\n                },\n                {\n                   
@@ -890,7 +897,12 @@ MonoBehaviour:
       \"path\": \"<Keyboard>/d\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"\",\n                   
       \"action\": \"WalkAction\",\n                    \"isComposite\": false,\n                   
-      \"isPartOfComposite\": true\n                }\n            ]\n        }\n   
+      \"isPartOfComposite\": true\n                },\n                {\n                   
+      \"name\": \"\",\n                    \"id\": \"182b479d-faf4-41d4-845e-d20bf150e46a\",\n                   
+      \"path\": \"<Keyboard>/e\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"InteractAction\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
       ],\n    \"controlSchemes\": []\n}"
     m_IsDirty: 0
   m_Toolbar:
@@ -917,7 +929,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -926,15 +938,15 @@ MonoBehaviour:
     y: 636
     width: 1965
     height: 295
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 15}
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -976,22 +988,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_project/Scripts/InteractionSystem
+    - Assets/Kenney/emotes-pack/PNG/Pixel/Style 1
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/_project/Scripts/InteractionSystem
+  - Assets/Kenney/emotes-pack/PNG/Pixel/Style 1
   m_LastFoldersGridSize: 96
   m_LastProjectPath: E:\Github\little-sim-prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: c03f0100
-    m_LastClickedID: 81856
-    m_ExpandedIDs: 00000000e0880000848a0000ca8a000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 146}
+    m_SelectedIDs: 7cca0000
+    m_LastClickedID: 51836
+    m_ExpandedIDs: 000000002c8c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1019,7 +1031,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e088000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000002c8c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1044,8 +1056,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 342c0100
-    m_LastClickedInstanceID: 76852
+    m_SelectedInstanceIDs: 4e700000
+    m_LastClickedInstanceID: 28750
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000da6f000006870000e0df00006ef80000
     m_RenameOverlay:
@@ -1133,7 +1145,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 76852
+  m_LastSelectedObjectID: 28782
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1194,7 +1206,7 @@ MonoBehaviour:
     m_CachedPref: -310
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 76852
+  m_LastInspectedObjectInstanceID: 28782
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

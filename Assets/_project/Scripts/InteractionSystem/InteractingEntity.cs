@@ -1,3 +1,4 @@
+using LittleSimPrototype.InputManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,21 +7,39 @@ namespace LittleSimPrototype.InteractionSystem
     public class InteractingEntity : MonoBehaviour
     {
         [SerializeField] private float _interactionRadius;
+        [SerializeField] private Vector3 _interactionOffset;
         [SerializeField] private LayerMask _layerMask;
 
         private Interactible _highlightedInteractible;
+
+        private void OnEnable()
+        {
+            InputEvents.OnInteractionInputEvent += HandleInteractionInput;
+        }
+
+        private void OnDisable()
+        {
+            InputEvents.OnInteractionInputEvent -= HandleInteractionInput;
+        }
 
         private void FixedUpdate()
         {
             CheckInteractiblesInRange();
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position + _interactionOffset, _interactionRadius);
+        }
+
         private void CheckInteractiblesInRange()
         {
-            Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(transform.position, _interactionRadius, _layerMask);
+            Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(transform.position + _interactionOffset, _interactionRadius, _layerMask);
 
             if (overlappedColliders.Length == 0)
             {
+                RemoveHighlightedObject();
                 return;
             }
 
@@ -43,18 +62,28 @@ namespace LittleSimPrototype.InteractionSystem
                 closestInteractible = GetClosestInteractible(interactiblesOverlapped, closestInteractible);
             }
 
-            Debug.Log("interacted with : " + closestInteractible);
             _highlightedInteractible = closestInteractible;
             _highlightedInteractible.Highlight();
         }
 
-        private static void CheckInteractibleAndAddToList(List<Interactible> _interactiblesOverlapped, Collider2D collider)
+        private void RemoveHighlightedObject()
+        {
+            if (_highlightedInteractible == null)
+            {
+                return;
+            }
+
+            _highlightedInteractible.EndHighlight();
+            _highlightedInteractible = null;
+        }
+
+        private static void CheckInteractibleAndAddToList(List<Interactible> interactiblesOverlapped, Collider2D collider)
         {
             Interactible interactible;
             collider.TryGetComponent<Interactible>(out interactible);
             if (interactible != null)
             {
-                _interactiblesOverlapped.Add(interactible);
+                interactiblesOverlapped.Add(interactible);
             }
         }
 
@@ -69,12 +98,17 @@ namespace LittleSimPrototype.InteractionSystem
                 closestInteractible = distanceFromActual > distanceFromClosest ? interactiblesOverlapped[i] : closestInteractible;
             }
 
-            //foreach (Interactible interactible in _interactiblesOverlapped)
-            //{
-
-            //}
-
             return closestInteractible;
+        }
+
+        private void HandleInteractionInput()
+        {
+            if (_highlightedInteractible == null)
+            {
+                return;
+            }
+
+            _highlightedInteractible.Interact();
         }
     }
 }
