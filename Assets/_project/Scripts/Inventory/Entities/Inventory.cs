@@ -33,6 +33,8 @@ namespace LittleSimPrototype.Inventory
 
             _inventoryItems[item] += quantity;
 
+            InventoryEvents.NotifyItemUpdate(item, _inventoryItems[item]);
+
             return new ItemRequestResponse(ItemRequestStatus.Success, item, _inventoryItems[item]);
         }
 
@@ -54,7 +56,17 @@ namespace LittleSimPrototype.Inventory
 
             _inventoryItems[item] -= quantity;
 
-            return new ItemRequestResponse(ItemRequestStatus.Success, item, _inventoryItems[item]);
+            InventoryEvents.NotifyItemUpdate(item, _inventoryItems[item]);
+
+            response =  new ItemRequestResponse(ItemRequestStatus.Success, item, _inventoryItems[item]);
+
+            if (quantity > 0)
+            {
+                return response;
+            }
+
+            _inventoryItems.Remove(item);
+            return response;
         }
 
         public ItemRequestResponse GetItem(Item item)

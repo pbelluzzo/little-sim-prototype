@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LittleSimPrototype.Inventory
@@ -9,5 +7,14 @@ namespace LittleSimPrototype.Inventory
     {
         [SerializeField] private string _assetLibraryLabel;
         public string AssetLibraryLabel { get => _assetLibraryLabel; }
+
+        [SerializeField] private bool _isEquiped;
+        public bool IsEquiped { get => _isEquiped; }
+
+        public override void UseItem()
+        {
+            _isEquiped = !_isEquiped;
+            InventoryEvents.NotifyItemEquiped(_assetLibraryLabel);
+        }
     }
 }
