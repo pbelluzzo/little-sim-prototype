@@ -5,7 +5,11 @@ namespace LittleSimPrototype.Inventory
 {
     public class Inventory : MonoBehaviour
     {
+        [SerializeField] private InventoryConfigs _configs;
+        public InventoryConfigs Configs { get => _configs; }
+
         private Dictionary<Item, int> _inventoryItems = new();
+        public Dictionary<Item, int> InventoryItems { get => _inventoryItems;  }
 
         public ItemRequestResponse AddItem(Item item, int quantity)
         {
@@ -15,7 +19,14 @@ namespace LittleSimPrototype.Inventory
                 return null;
             }
 
-            if (!_inventoryItems.ContainsKey(item))
+            bool inventoryHasItem = _inventoryItems.ContainsKey(item);
+
+            if (_configs.InventorySlots <= _inventoryItems.Count && inventoryHasItem == false)
+            {
+                return new ItemRequestResponse(ItemRequestStatus.InventoryIsFull);
+            }
+
+            if (!inventoryHasItem)
             {
                 _inventoryItems.Add(item, 0);
             }
