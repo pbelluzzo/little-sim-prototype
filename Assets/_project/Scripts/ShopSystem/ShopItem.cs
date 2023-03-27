@@ -8,6 +8,10 @@ namespace LittleSimPrototype.ShopSystem
         [SerializeField] private Item _item;
         public Item Item { get => _item; }
 
+        [SerializeField] private string _priceCurrency;
+        public string PriceCurrency { get => _priceCurrency;}
+
         [SerializeField] private float _itemPrice;
+        public float Price { get => _itemPrice; }
     }
 }

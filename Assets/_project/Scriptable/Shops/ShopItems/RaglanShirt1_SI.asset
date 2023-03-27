@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RaglanShirt1_SI
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: d1068f63d3d986142b48edd098d28768, type: 2}
+  _priceCurrency: $
   _itemPrice: 14

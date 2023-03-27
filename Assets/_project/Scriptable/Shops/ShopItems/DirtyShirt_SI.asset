@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: DirtyShirt_SI
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: a35e72b3fdbb4c545a12eb80c6592525, type: 2}
+  _priceCurrency: $
   _itemPrice: 1
