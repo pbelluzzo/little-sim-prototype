@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 5067517556525803340}
   - component: {fileID: 5067517556525803345}
   - component: {fileID: 5067517556525803343}
+  - component: {fileID: 1783760706407790810}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -275,7 +276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemImage: {fileID: 5067517555436122605}
   _quantityTMP: {fileID: 5067517555182445592}
-  _hoverTooltipGameObject: {fileID: 0}
 --- !u!114 &5067517556525803345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5067517556525803347}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -350,3 +350,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1783760706407790810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5067517556525803347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: 100
+  m_PreferredHeight: 100
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1

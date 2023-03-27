@@ -1,15 +1,15 @@
 using UnityEngine;
 using System.Linq;
-using Screen = LittleSimPrototype.UI.Screen;
 using System.Collections.Generic;
+using LittleSimPrototype.UI;
 
 namespace LittleSimPrototype.Inventory
 {
-    public class InventoryScreen : Screen
+    public class InventoryScreen : UIScreen
     {
         [SerializeField] private InventorySlot _inventorySlotPrefab;
         [SerializeField] private GameObject _itemSlotsContainer;
-        [SerializeField] private Inventory _playerInventory;
+        [SerializeField] private PlayerInventory _playerInventory;
 
         private List<InventorySlot> _inventorySlots = new();
         private List<InventorySlot> _freeSlots = new();
@@ -59,6 +59,7 @@ namespace LittleSimPrototype.Inventory
             }
 
             InventorySlot slot = _freeSlots[0];
+            slot.gameObject.SetActive(true);
             _freeSlots.Remove(slot);
             slot.SetupSlot(item, quantity);
         }
@@ -73,6 +74,7 @@ namespace LittleSimPrototype.Inventory
 
             slot.RemoveItem();
             _freeSlots.Insert(0, slot);
+            slot.gameObject.SetActive(false);
         }
         private void HandleItemUpdate(Item item, int quantity)
         {

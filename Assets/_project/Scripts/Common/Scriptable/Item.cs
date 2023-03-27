@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LittleSimPrototype.Inventory
+namespace LittleSimPrototype
 {
     public class Item : ScriptableObject
     {

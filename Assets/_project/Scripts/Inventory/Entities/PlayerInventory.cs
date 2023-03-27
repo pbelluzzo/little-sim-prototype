@@ -3,13 +3,28 @@ using UnityEngine;
 
 namespace LittleSimPrototype.Inventory
 {
-    public class Inventory : MonoBehaviour
+    public class PlayerInventory : MonoBehaviour
     {
         [SerializeField] private InventoryConfigs _configs;
         public InventoryConfigs Configs { get => _configs; }
 
         private Dictionary<Item, int> _inventoryItems = new();
         public Dictionary<Item, int> InventoryItems { get => _inventoryItems;  }
+
+        private int _money;
+        public int Money 
+        {
+            get => _money;
+            set
+            {
+                _money = value >= 0 ? value : 0;
+            }
+        }
+
+        private void Start()
+        {
+            _money = _configs.StartingMoney;
+        }
 
         public ItemRequestResponse AddItem(Item item, int quantity)
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace LittleSimPrototype.UI
 {
-    public class Screen : MonoBehaviour
+    public class UIScreen : MonoBehaviour
     {
         [SerializeField] protected GameObject _screenGameObject;
 

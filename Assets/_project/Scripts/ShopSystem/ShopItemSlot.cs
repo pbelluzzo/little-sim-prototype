@@ -2,24 +2,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LittleSimPrototype.Inventory
+namespace LittleSimPrototype.ShopSystem
 {
-    public class InventorySlot : MonoBehaviour
+    public class ShopItemSlot : MonoBehaviour
     {
         [SerializeField] private Image _itemImage;
 
         [SerializeField] private TextMeshProUGUI _quantityTMP;
-        public string QuantityText { set => _quantityTMP.text = value; }
+        
+        [SerializeField] private TextMeshProUGUI _priceTMP;
 
         private Button _buttonComponent;
-        
-        private Item _equipedItem;
-        public Item EquipedItem { get => _equipedItem; }
 
+        private ShopItem _shopItem;
+        public ShopItem ShopItem { get => _shopItem; }
+
+        public string QuantityText { set => _quantityTMP.text = value; }
 
         private void Start()
         {
-            _buttonComponent= GetComponent<Button>();
+            _buttonComponent = GetComponent<Button>();
         }
 
         public void RemoveItem()
@@ -29,10 +31,10 @@ namespace LittleSimPrototype.Inventory
             _quantityTMP.text = "";
         }
 
-        public void SetupSlot(Item item, int quantity)
+        public void SetupSlot(ShopItem item, int quantity)
         {
-            _equipedItem = item;
-            _itemImage.sprite = item.ItemImage;
+            _shopItem = item;
+            _itemImage.sprite = ShopItem.Item.ItemImage;
             _quantityTMP.text = quantity.ToString();
             _buttonComponent.interactable = true;
         }
