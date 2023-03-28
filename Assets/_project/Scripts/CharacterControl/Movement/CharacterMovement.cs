@@ -28,7 +28,7 @@ namespace LittleSimPrototype.CharacterControl
 
         private void HandleMovementInput(Vector2 movementVector)
         {
-            _rigidbody.velocity = movementVector * _configs.MovementSpeed * Time.deltaTime;
+            _rigidbody.velocity = movementVector * _configs.MovementSpeed;// * Time.deltaTime;
 
             _charAnimController.SetMovementAnimation(movementVector);
         }

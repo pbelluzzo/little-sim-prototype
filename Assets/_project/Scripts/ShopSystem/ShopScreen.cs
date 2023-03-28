@@ -37,6 +37,7 @@ namespace LittleSimPrototype.ShopSystem
             }
 
             InventoryEvents.OnPlayerItemDataResponseEvent += HandlePlayerItemDataResponse;
+            InventoryEvents.OnItemEquippedEvent += HandleItemEquippedEvent;
 
             _buyTabButton.onClick.AddListener(HandleBuyTabButtonClick);
             _sellTabButton.onClick.AddListener(HandleSellTabButtonClick);
@@ -59,6 +60,7 @@ namespace LittleSimPrototype.ShopSystem
             }
 
             InventoryEvents.OnPlayerItemDataResponseEvent -= HandlePlayerItemDataResponse;
+            InventoryEvents.OnItemEquippedEvent -= HandleItemEquippedEvent;
 
             _buyTabButton.onClick.RemoveListener(HandleBuyTabButtonClick);
             _sellTabButton.onClick.RemoveListener(HandleSellTabButtonClick);
@@ -149,7 +151,7 @@ namespace LittleSimPrototype.ShopSystem
             PrepareSellTabShopItemSlots(playerItemData);
 
             List<ShopItem> itemsAvailableForSelling = new();
-            itemsAvailableForSelling = _shop.ItemsBeingBought.Where(i => playerItemData.InventoryItems.Keys.Contains<Item>(i.Item)).ToList<ShopItem>();
+            itemsAvailableForSelling = _shop.ItemsBeingBought.Where(i => playerItemData.InventoryItems.Keys.Contains<Item>(i.Item) && i.Item != playerItemData.EquippedItem).ToList<ShopItem>();
 
             if (itemsAvailableForSelling.Count == 0)
             {
@@ -157,6 +159,11 @@ namespace LittleSimPrototype.ShopSystem
             }
 
             SetupShopItemSlotsWithItemsAvailableForSelling(itemsAvailableForSelling);
+        }
+
+        private void HandleItemEquippedEvent(Item item)
+        {
+            InventoryEvents.RequestPlayerItemData();
         }
 
         private void HandleBuyTabButtonClick()
