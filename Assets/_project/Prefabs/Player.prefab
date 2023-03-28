@@ -130,8 +130,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.48}
-  m_Size: {x: 0.6, y: 1}
+  m_Offset: {x: 0, y: 0.4017692}
+  m_Size: {x: 0.6, y: 0.84353846}
   m_Direction: 0
 --- !u!210 &1360675436526681775
 SortingGroup:
@@ -574,6 +574,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1446601868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167781999209057959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e22db737e10c0b47a417a8cc99c0cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultBodyItem: {fileID: 11400000, guid: f1690d856263cdf4c9e8dd85b95424d0, type: 2}
+  _bodySpriteResolver: {fileID: 1053155459}
+  _armLSpriteResolver: {fileID: 1705947050}
+  _armRSpriteResolver: {fileID: 942508516}
 --- !u!114 &4898555544643142944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,22 +619,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 410ff34a3eac56446b88d7aa6af268cc, type: 3}
---- !u!114 &1446601868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167781999209057959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e22db737e10c0b47a417a8cc99c0cec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _defaultBodyItem: {fileID: 11400000, guid: f1690d856263cdf4c9e8dd85b95424d0, type: 2}
-  _bodySpriteResolver: {fileID: 1053155459}
-  _armLSpriteResolver: {fileID: 1705947050}
-  _armRSpriteResolver: {fileID: 942508516}
 --- !u!4 &1340961091458750148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 4a418a410cfbfc841afeb163ca386207, type: 3}
