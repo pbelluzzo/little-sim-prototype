@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b6dc7ae4d9a6974ebd787bfd8f24752, type: 3}
-  m_Name: WhiteShirt_SI
+  m_Name: OldTShirt_SI
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: 7d65cbd756332824b8011c9581c9bda4, type: 2}
+  _item: {fileID: 11400000, guid: f1690d856263cdf4c9e8dd85b95424d0, type: 2}
   _priceCurrency: $
-  _itemPrice: 10
+  _itemPrice: 1

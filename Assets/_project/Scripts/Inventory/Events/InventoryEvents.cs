@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 
 namespace LittleSimPrototype.Inventory
 {
     public static class InventoryEvents
     {
-        public static event Action<string, string, bool> OnItemEquipedEvent;
-        public static void NotifyItemEquiped(string itemLabel, string category , bool isEquipped) => OnItemEquipedEvent?.Invoke(itemLabel, category, isEquipped);
+        public static event Action<List<EquipableSprite>> OnItemEquipedEvent;
+        public static void NotifyItemEquiped(List<EquipableSprite> equipableSpriteList) => OnItemEquipedEvent?.Invoke(equipableSpriteList);
 
         public static event Action<Item, int> OnItemUpdateEvent;
         public static void NotifyItemUpdate(Item item, int quantity) => OnItemUpdateEvent?.Invoke(item, quantity);
