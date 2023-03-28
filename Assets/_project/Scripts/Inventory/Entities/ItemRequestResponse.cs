@@ -24,6 +24,7 @@ namespace LittleSimPrototype.Inventory
         Success,
         DoesNotContain,
         InventoryIsFull,
+        InvalidQuantity,
     }
 
 }

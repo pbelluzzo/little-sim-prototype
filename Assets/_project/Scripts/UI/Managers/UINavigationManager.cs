@@ -8,7 +8,7 @@ namespace LittleSimPrototype.UI
         private static UINavigationManager _instance;
         public static UINavigationManager Instance { get => _instance; }
 
-        private List<Screen> _activeScreens = new();
+        private List<UIScreen> _activeScreens = new();
 
         private void Awake()
         {
@@ -21,13 +21,13 @@ namespace LittleSimPrototype.UI
             _instance = this;
         }
 
-        public void OpenScreen(Screen screen)
+        public void OpenScreen(UIScreen screen)
         {
             screen.Enable();
             _activeScreens.Add(screen);
         }
 
-        public void CloseScreen(Screen screen)
+        public void CloseScreen(UIScreen screen)
         {
             if (!_activeScreens.Contains(screen))
             {
@@ -40,7 +40,7 @@ namespace LittleSimPrototype.UI
 
         public void CloseAll()
         {
-            foreach(Screen screen in _activeScreens)
+            foreach(UIScreen screen in _activeScreens)
             {
                 screen.Disable();
             }

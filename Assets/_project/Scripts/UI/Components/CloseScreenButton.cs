@@ -6,7 +6,7 @@ namespace LittleSimPrototype.UI
     [RequireComponent(typeof(Button))]
     public class CloseScreenButton : MonoBehaviour
     {
-        [SerializeField] private Screen _screen;
+        [SerializeField] private UIScreen _screen;
 
         private Button _button;
 
