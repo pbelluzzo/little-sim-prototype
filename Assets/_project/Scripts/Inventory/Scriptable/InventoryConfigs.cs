@@ -9,5 +9,7 @@ namespace LittleSimPrototype.Inventory
     {
         public int StartingMoney;
         public int InventorySlots;
+
+        public List<Item> StartingItems = new();
     }
 }

@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _configs: {fileID: 11400000, guid: 3891a929f1e4c8845bf4dace59584ad6, type: 2}
+  _playerItemData: {fileID: 11400000, guid: d5d18eb9d13107b4094dd76beae3b88f, type: 2}
 --- !u!50 &1360675436526681764
 Rigidbody2D:
   serializedVersion: 4

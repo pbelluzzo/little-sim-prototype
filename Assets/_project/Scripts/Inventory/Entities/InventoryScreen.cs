@@ -48,7 +48,7 @@ namespace LittleSimPrototype.Inventory
 
             int slotIndex = 0;
 
-            foreach (KeyValuePair<Item, int> playerItem in _playerInventory.InventoryItems)
+            foreach (KeyValuePair<Item, int> playerItem in _playerInventory.PlayerItemData.InventoryItems)
             {
                 _inventorySlots[slotIndex].SetupSlot(playerItem.Key, playerItem.Value);
                 _freeSlots.Remove(_inventorySlots[slotIndex]);

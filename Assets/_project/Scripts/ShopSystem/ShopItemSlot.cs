@@ -42,6 +42,14 @@ namespace LittleSimPrototype.ShopSystem
             _buttonComponent.interactable = true;
         }
 
+        public void SetupSlot(ShopItem item, int price)
+        {
+            _shopItem = item;
+            _itemImage.sprite = ShopItem.Item.ItemImage;
+            _priceTMP.text = item.PriceCurrency + price.ToString() + ",00";
+            _buttonComponent.interactable = true;
+        }
+
         private void HandleClick()
         {
             OnSlotClickedEvent?.Invoke(this);

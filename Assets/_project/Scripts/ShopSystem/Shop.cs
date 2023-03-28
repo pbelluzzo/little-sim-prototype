@@ -13,6 +13,7 @@ namespace LittleSimPrototype.ShopSystem
         public string ShopDescription { get => _shopDescription;}
 
         [SerializeField, Range(0,1)] private float _percentagePaidForBoughtItems;
+        public float PercentagePaidForBoughtItems { get => _percentagePaidForBoughtItems; }
 
         [SerializeField] private List<ShopItem> _itemsSoldByThisShop = new();
         public List<ShopItem> ItemsOnSale { get => _itemsSoldByThisShop; }

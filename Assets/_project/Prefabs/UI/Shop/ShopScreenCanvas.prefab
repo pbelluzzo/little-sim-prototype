@@ -425,7 +425,7 @@ RectTransform:
   m_Children:
   - {fileID: 1280994373}
   m_Father: {fileID: 1396698657114702958}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -631,9 +631,11 @@ MonoBehaviour:
   _screenGameObject: {fileID: 1396698657114702959}
   _shopTitle: {fileID: 1396698656324684286}
   _shopDescription: {fileID: 1396698656605898031}
-  _shopBuyItemContainer: {fileID: 0}
-  _shopSellItemContainer: {fileID: 0}
+  _buyTabButton: {fileID: 784898753}
+  _sellTabButton: {fileID: 1328865915}
   _shopItemSlotPrefab: {fileID: 2740693056269204092, guid: 163c7e05deb50bf4ba2c50a9bcc4767f, type: 3}
+  _buyTab: {fileID: 1991680872223682265}
+  _sellTab: {fileID: 3675295130551222313}
 --- !u!1 &1396698656324684284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,9 +1026,9 @@ RectTransform:
   - {fileID: 1396698656605898028}
   - {fileID: 784898752}
   - {fileID: 1396698657807265753}
-  - {fileID: 1396698657651139250}
   - {fileID: 1328865914}
   - {fileID: 6693821780054590678}
+  - {fileID: 1396698657651139250}
   m_Father: {fileID: 1396698655803343773}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1254,7 +1256,7 @@ RectTransform:
   m_Children:
   - {fileID: 1396698657365454541}
   m_Father: {fileID: 1396698657114702958}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1367,8 +1369,9 @@ GameObject:
   - component: {fileID: 1396698657807265753}
   - component: {fileID: 1396698657807265755}
   - component: {fileID: 1396698657807265752}
+  - component: {fileID: 1991680872223682265}
   m_Layer: 5
-  m_Name: BuyItemsPanel
+  m_Name: BuyItemsTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1433,6 +1436,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1991680872223682265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396698657807265758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe61ffe474c69c04fb85b3d11416dcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSlotContainer: {fileID: 1396698657101692134}
 --- !u!1 &2277245324577176874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,8 +1460,9 @@ GameObject:
   - component: {fileID: 6693821780054590678}
   - component: {fileID: 4724256163538400965}
   - component: {fileID: 2516511583601969804}
+  - component: {fileID: 3675295130551222313}
   m_Layer: 5
-  m_Name: SellItemsPanel
+  m_Name: SellItemsTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,7 +1482,7 @@ RectTransform:
   m_Children:
   - {fileID: 5928302522473524050}
   m_Father: {fileID: 1396698657114702958}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1510,6 +1527,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3675295130551222313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277245324577176874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe61ffe474c69c04fb85b3d11416dcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSlotContainer: {fileID: 8871747885757568970}
 --- !u!1 &8871747885757568970
 GameObject:
   m_ObjectHideFlags: 0

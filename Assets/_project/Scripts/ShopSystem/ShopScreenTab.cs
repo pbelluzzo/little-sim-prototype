@@ -2,20 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LittleSimPrototype
+namespace LittleSimPrototype.ShopSystem
 {
     public class ShopScreenTab : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        [SerializeField] private GameObject _itemSlotContainer;
+        public GameObject ItemSlotContainer { get => _itemSlotContainer; }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+        private List<ShopItemSlot> _shopItemSlots = new();
+        public List<ShopItemSlot> ShopItemSlots { get => _shopItemSlots; }
     }
 }

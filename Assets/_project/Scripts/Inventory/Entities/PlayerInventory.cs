@@ -1,5 +1,4 @@
 using LittleSimPrototype.ShopSystem;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LittleSimPrototype.Inventory
@@ -9,32 +8,30 @@ namespace LittleSimPrototype.Inventory
         [SerializeField] private InventoryConfigs _configs;
         public InventoryConfigs Configs { get => _configs; }
 
-        private Dictionary<Item, int> _inventoryItems = new();
-        public Dictionary<Item, int> InventoryItems { get => _inventoryItems;  }
-
-        private int _money;
-        public int Money 
-        {
-            get => _money;
-            set
-            {
-                _money = value >= 0 ? value : 0;
-            }
-        }
+        [SerializeField] private PlayerItemData _playerItemData;
+        public PlayerItemData PlayerItemData { get => _playerItemData; }
 
         private void Start()
         {
-            _money = _configs.StartingMoney;
+            _playerItemData.Money = _configs.StartingMoney;
+            _playerItemData.InventoryItems.Clear();
+
+            foreach(Item item in _configs.StartingItems)
+            {
+                AddItem(item, 1);
+            }
         }
 
         private void OnEnable()
         {
             ShopEvents.OnItemBoughtEvent += HandleItemBought;
+            ShopEvents.OnItemSoldEvent += HandleItemSold;
         }
 
         private void OnDisable()
         {
             ShopEvents.OnItemBoughtEvent -= HandleItemBought;
+            ShopEvents.OnItemSoldEvent -= HandleItemSold;
         }
 
         public ItemRequestResponse AddItem(Item item, int quantity = 1)
@@ -45,23 +42,23 @@ namespace LittleSimPrototype.Inventory
                 return new ItemRequestResponse(ItemRequestStatus.InvalidQuantity);
             }
 
-            bool inventoryHasItem = _inventoryItems.ContainsKey(item);
+            bool inventoryHasItem = _playerItemData.InventoryItems.ContainsKey(item);
 
-            if (_configs.InventorySlots <= _inventoryItems.Count && inventoryHasItem == false)
+            if (_configs.InventorySlots <= _playerItemData.InventoryItems.Count && inventoryHasItem == false)
             {
                 return new ItemRequestResponse(ItemRequestStatus.InventoryIsFull);
             }
 
             if (!inventoryHasItem)
             {
-                _inventoryItems.Add(item, 0);
+                _playerItemData.InventoryItems.Add(item, 0);
             }
 
-            _inventoryItems[item] += quantity;
+            _playerItemData.InventoryItems[item] += quantity;
 
-            InventoryEvents.NotifyItemUpdate(item, _inventoryItems[item]);
+            InventoryEvents.NotifyItemUpdate(item, _playerItemData.InventoryItems[item]);
 
-            return new ItemRequestResponse(ItemRequestStatus.Success, item, _inventoryItems[item]);
+            return new ItemRequestResponse(ItemRequestStatus.Success, item, _playerItemData.InventoryItems[item]);
         }
 
         public ItemRequestResponse RemoveItem(Item item, int quantity)
@@ -74,24 +71,24 @@ namespace LittleSimPrototype.Inventory
 
             ItemRequestResponse response;
 
-            if (!_inventoryItems.ContainsKey(item) || _inventoryItems[item] < quantity)
+            if (!_playerItemData.InventoryItems.ContainsKey(item) || _playerItemData.InventoryItems[item] < quantity)
             {
                 response = new(ItemRequestStatus.DoesNotContain);
                 return response;
             }
 
-            _inventoryItems[item] -= quantity;
+            _playerItemData.InventoryItems[item] -= quantity;
 
-            InventoryEvents.NotifyItemUpdate(item, _inventoryItems[item]);
+            InventoryEvents.NotifyItemUpdate(item, _playerItemData.InventoryItems[item]);
 
-            response =  new ItemRequestResponse(ItemRequestStatus.Success, item, _inventoryItems[item]);
+            response =  new ItemRequestResponse(ItemRequestStatus.Success, item, _playerItemData.InventoryItems[item]);
 
             if (quantity > 0)
             {
                 return response;
             }
 
-            _inventoryItems.Remove(item);
+            _playerItemData.InventoryItems.Remove(item);
             return response;
         }
 
@@ -99,19 +96,19 @@ namespace LittleSimPrototype.Inventory
         {
             ItemRequestResponse response;
 
-            if (!_inventoryItems.ContainsKey(item) || _inventoryItems[item] <= 0)
+            if (!_playerItemData.InventoryItems.ContainsKey(item) || _playerItemData.InventoryItems[item] <= 0)
             {
                 response = new(ItemRequestStatus.DoesNotContain);
                 return response;
             }
 
-            response = new(ItemRequestStatus.Success, item, _inventoryItems[item]);
+            response = new(ItemRequestStatus.Success, item, _playerItemData.InventoryItems[item]);
             return response;
         }
 
         private void HandleItemBought(ShopItem shopItem)
         {
-            if (_money < shopItem.Price)
+            if (_playerItemData.Money < shopItem.Price)
             {
                 Debug.LogWarning("Not Enought Money");
                 return;
@@ -119,11 +116,26 @@ namespace LittleSimPrototype.Inventory
 
             ItemRequestResponse response = AddItem(shopItem.Item);
 
-            if (response.RequestStatus == ItemRequestStatus.Success)
+            if (response.RequestStatus != ItemRequestStatus.Success)
             {
-                Debug.Log("Item Bought" + shopItem.Item.ItemName);
-                Money -= shopItem.Price;
+                Debug.LogWarning("Item buy failed with request status : " + response.RequestStatus);
+                return;
             }
+            
+            _playerItemData.Money -= shopItem.Price;
+        }
+
+        private void HandleItemSold(ShopItem shopItem, int price)
+        {
+            ItemRequestResponse response = RemoveItem(shopItem.Item, 1);
+
+            if (response.RequestStatus != ItemRequestStatus.Success)
+            {
+                Debug.LogWarning("Item sell failed with request status : " + response.RequestStatus);
+                return;
+            }
+
+            _playerItemData.Money += price;
         }
 
     }
