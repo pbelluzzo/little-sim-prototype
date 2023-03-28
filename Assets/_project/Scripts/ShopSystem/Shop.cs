@@ -30,5 +30,10 @@ namespace LittleSimPrototype.ShopSystem
         {
 
         }
+
+        public int GetUsedItemPrice(int price)
+        {
+            return Mathf.CeilToInt(price * _percentagePaidForBoughtItems);
+        }
     }
 }

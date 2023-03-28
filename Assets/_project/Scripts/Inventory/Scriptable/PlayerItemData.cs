@@ -14,6 +14,7 @@ namespace LittleSimPrototype.Inventory
             set
             {
                 _money = value >= 0 ? value : 0;
+                InventoryEvents.NotifyPlayerMoneyUpdate(_money);
             }
         }
 

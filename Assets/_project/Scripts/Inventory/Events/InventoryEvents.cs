@@ -15,5 +15,8 @@ namespace LittleSimPrototype.Inventory
 
         public static event Action<PlayerItemData> OnPlayerItemDataResponseEvent;
         public static void NotifyPlayerDataResponse(PlayerItemData playerItemData) => OnPlayerItemDataResponseEvent?.Invoke(playerItemData);
+
+        public static event Action<int> OnPlayerMoneyUpdateEvent;
+        public static void NotifyPlayerMoneyUpdate(int money) => OnPlayerMoneyUpdateEvent?.Invoke(money);
     }
 }
