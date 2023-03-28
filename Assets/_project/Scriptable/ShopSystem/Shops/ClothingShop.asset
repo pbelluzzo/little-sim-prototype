@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 824aa8f79a5258f47a34c784b32536e5, type: 3}
-  m_Name: ClothesShop
+  m_Name: ClothingShop
   m_EditorClassIdentifier: 
-  _shopName: Cloth Shop
-  _shopDescription: The best clothes around the town!
+  _shopName: Clothing Shop
+  _shopDescription: The best shirts around the town!
   _percentagePaidForBoughtItems: 0.8
   _itemsSoldByThisShop:
   - {fileID: 11400000, guid: ad01e1667ddd20946bc60dadfbf10974, type: 2}
