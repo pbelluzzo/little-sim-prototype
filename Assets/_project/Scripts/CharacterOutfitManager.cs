@@ -7,23 +7,23 @@ namespace LittleSimPrototype
 {
     public class CharacterOutfitManager : MonoBehaviour
     {
-        [SerializeField] private EquipableItem _defaultBodyItem;
+        [SerializeField] private EquippableItem _defaultBodyItem;
         [SerializeField] private SpriteResolver _bodySpriteResolver;
         [SerializeField] private SpriteResolver _armLSpriteResolver;
         [SerializeField] private SpriteResolver _armRSpriteResolver;
 
         private void Start()
         {
-            HandleItemEquiped(_defaultBodyItem.EquipableSpriteList);
+            InventoryEvents.NotifyItemEquiped(_defaultBodyItem);
         }
         private void OnEnable()
         {
-            InventoryEvents.OnItemEquipedEvent += HandleItemEquiped;
+            InventoryEvents.OnItemEquippedEvent += HandleItemEquiped;
         }
 
         private void OnDisable()
         {
-            InventoryEvents.OnItemEquipedEvent -= HandleItemEquiped;
+            InventoryEvents.OnItemEquippedEvent -= HandleItemEquiped;
         }
 
         private void EquipItem(EquipmentCategory category, string label)
@@ -53,9 +53,9 @@ namespace LittleSimPrototype
             }
         }
 
-        private void HandleItemEquiped(List<EquipableSprite> equipableSpriteList)
+        private void HandleItemEquiped(EquippableItem equippableItem)
         {
-            foreach(EquipableSprite equipableSprite in equipableSpriteList)
+            foreach(EquipableSprite equipableSprite in equippableItem.EquipableSpriteList)
             {
                 EquipItem(equipableSprite.EquipmentCategory, equipableSprite.AssetLibraryLabel);
             }

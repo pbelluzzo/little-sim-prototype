@@ -20,5 +20,7 @@ namespace LittleSimPrototype.Inventory
         private Dictionary<Item, int> _inventoryItems = new();
         public Dictionary<Item, int> InventoryItems { get => _inventoryItems; }
 
+        private EquippableItem _equippedItem;
+        public EquippableItem EquippedItem { get => _equippedItem; set => _equippedItem = value; }
     }
 }

@@ -31,7 +31,7 @@ namespace LittleSimPrototype.InputManagement
             _playerInputActions.CharacterMap.InteractAction.Disable();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             ReadAndNotifyWalkAction();
         }

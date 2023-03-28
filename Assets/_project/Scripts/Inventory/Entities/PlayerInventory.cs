@@ -25,6 +25,7 @@ namespace LittleSimPrototype.Inventory
         private void OnEnable()
         {
             InventoryEvents.OnRequestPlayerItemDataEvent += HandleRequestPlayerItemData;
+            InventoryEvents.OnItemEquippedEvent += HandleItemEquipped;
 
             ShopEvents.OnItemBoughtEvent += HandleItemBought;
             ShopEvents.OnItemSoldEvent += HandleItemSold;
@@ -33,6 +34,7 @@ namespace LittleSimPrototype.Inventory
         private void OnDisable()
         {
             InventoryEvents.OnRequestPlayerItemDataEvent -= HandleRequestPlayerItemData;
+            InventoryEvents.OnItemEquippedEvent += HandleItemEquipped;
 
             ShopEvents.OnItemBoughtEvent -= HandleItemBought;
             ShopEvents.OnItemSoldEvent -= HandleItemSold;
@@ -113,6 +115,17 @@ namespace LittleSimPrototype.Inventory
         private void HandleRequestPlayerItemData()
         {
             InventoryEvents.NotifyPlayerDataResponse(_playerItemData);
+        }
+
+        private void HandleItemEquipped(EquippableItem item)
+        {
+            if (_playerItemData.EquippedItem != null)
+            {
+                _playerItemData.EquippedItem.IsEquipped = false;
+            }
+
+            _playerItemData.EquippedItem = item;
+            item.IsEquipped = true;
         }
 
         private void HandleItemBought(ShopItem shopItem)

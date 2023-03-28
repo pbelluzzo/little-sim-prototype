@@ -5,8 +5,8 @@ namespace LittleSimPrototype.Inventory
 {
     public static class InventoryEvents
     {
-        public static event Action<List<EquipableSprite>> OnItemEquipedEvent;
-        public static void NotifyItemEquiped(List<EquipableSprite> equipableSpriteList) => OnItemEquipedEvent?.Invoke(equipableSpriteList);
+        public static event Action<EquippableItem> OnItemEquippedEvent;
+        public static void NotifyItemEquiped(EquippableItem equipableItem) => OnItemEquippedEvent?.Invoke(equipableItem);
 
         public static event Action<Item, int> OnItemUpdateEvent;
         public static void NotifyItemUpdate(Item item, int quantity) => OnItemUpdateEvent?.Invoke(item, quantity);
