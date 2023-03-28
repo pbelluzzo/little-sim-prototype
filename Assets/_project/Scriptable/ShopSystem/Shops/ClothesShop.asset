@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 744a6c348b3c9bc4dbd9e64f39e9da53, type: 2}
   _itemsBoughtByThisShop:
   - {fileID: 11400000, guid: ad01e1667ddd20946bc60dadfbf10974, type: 2}
-  - {fileID: 11400000, guid: 744a6c348b3c9bc4dbd9e64f39e9da53, type: 2}
   - {fileID: 11400000, guid: e29be0a8f55e60e43a3d68d2121c074d, type: 2}
+  - {fileID: 11400000, guid: 744a6c348b3c9bc4dbd9e64f39e9da53, type: 2}

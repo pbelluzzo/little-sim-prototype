@@ -16,3 +16,4 @@ MonoBehaviour:
   _itemName: White T-Shirt With Pocket
   _itemDescription: A brand new white T-shirt. And look, there is a pocket in it!
   _assetLibraryLabel: white-shirt1
+  _equipmentCategory: body

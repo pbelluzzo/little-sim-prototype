@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 005a7618c3793a740bb10542d20c13aa, type: 3}
-  m_Name: dirty-shirt
+  m_Name: default-shirt
   m_EditorClassIdentifier: 
-  _itemImage: {fileID: 21300000, guid: 061dd30e1684f6a4d96517edbaddb059, type: 3}
-  _itemName: Dirty White T-Shirt
-  _itemDescription: It looks like it's time to replace this.
-  _assetLibraryLabel: dirty-shirt
+  _itemImage: {fileID: 9051466796021786873, guid: 293753968c4dccf4d980147d7dbbcb5b, type: 3}
+  _itemName: Old White T-Shirt
+  _itemDescription: Was a white T-shirt. Now it's an almost white T-shit
+  _assetLibraryLabel: body
   _equipmentCategory: body

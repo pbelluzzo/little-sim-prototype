@@ -9,13 +9,16 @@ namespace LittleSimPrototype
         [SerializeField] private string _assetLibraryLabel;
         public string AssetLibraryLabel { get => _assetLibraryLabel; }
 
+        [SerializeField] private string _equipmentCategory;
+        public string EquipmentCategory { get => _equipmentCategory; }
+
         private bool _isEquipped;
         public bool IsEquipped { get => _isEquipped; }
 
         public override void UseItem()
         {
             _isEquipped = !_isEquipped;
-            InventoryEvents.NotifyItemEquiped(_assetLibraryLabel, _isEquipped);
+            InventoryEvents.NotifyItemEquiped(_assetLibraryLabel, _equipmentCategory, _isEquipped);
         }
     }
 }
