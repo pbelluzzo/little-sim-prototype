@@ -24,12 +24,16 @@ namespace LittleSimPrototype.Inventory
 
         private void OnEnable()
         {
+            InventoryEvents.OnRequestPlayerItemDataEvent += HandleRequestPlayerItemData;
+
             ShopEvents.OnItemBoughtEvent += HandleItemBought;
             ShopEvents.OnItemSoldEvent += HandleItemSold;
         }
 
         private void OnDisable()
         {
+            InventoryEvents.OnRequestPlayerItemDataEvent -= HandleRequestPlayerItemData;
+
             ShopEvents.OnItemBoughtEvent -= HandleItemBought;
             ShopEvents.OnItemSoldEvent -= HandleItemSold;
         }
@@ -83,7 +87,7 @@ namespace LittleSimPrototype.Inventory
 
             response =  new ItemRequestResponse(ItemRequestStatus.Success, item, _playerItemData.InventoryItems[item]);
 
-            if (quantity > 0)
+            if (_playerItemData.InventoryItems[item] > 0)
             {
                 return response;
             }
@@ -104,6 +108,11 @@ namespace LittleSimPrototype.Inventory
 
             response = new(ItemRequestStatus.Success, item, _playerItemData.InventoryItems[item]);
             return response;
+        }
+
+        private void HandleRequestPlayerItemData()
+        {
+            InventoryEvents.NotifyPlayerDataResponse(_playerItemData);
         }
 
         private void HandleItemBought(ShopItem shopItem)

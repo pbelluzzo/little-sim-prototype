@@ -32,8 +32,12 @@ namespace LittleSimPrototype.ShopSystem
                 slot.OnSlotClickedEvent += HandleSlotClicked;
             }
 
+            foreach (ShopItemSlot slot in _sellTab.ShopItemSlots)
+            {
+                slot.OnSlotClickedEvent += HandleSlotClicked;
+            }
+
             InventoryEvents.OnPlayerItemDataResponseEvent += HandlePlayerItemDataResponse;
-            InventoryEvents.RequestPlayerItemData();
 
             _buyTabButton.onClick.AddListener(HandleBuyTabButtonClick);
             _sellTabButton.onClick.AddListener(HandleSellTabButtonClick);
@@ -44,6 +48,11 @@ namespace LittleSimPrototype.ShopSystem
             base.Disable();
 
             foreach(ShopItemSlot slot in _buyTab.ShopItemSlots)
+            {
+                slot.OnSlotClickedEvent -= HandleSlotClicked;
+            }
+
+            foreach (ShopItemSlot slot in _sellTab.ShopItemSlots)
             {
                 slot.OnSlotClickedEvent -= HandleSlotClicked;
             }
@@ -85,12 +94,39 @@ namespace LittleSimPrototype.ShopSystem
                 }
 
                 slotList.Add(slot);
+                slot.OnSlotClickedEvent += HandleSlotClicked;
             }
         }
 
         private int GetUsedItemPrice(int price)
         {
             return Mathf.CeilToInt(price * _shop.PercentagePaidForBoughtItems);
+        }
+
+        private void PrepareSellTabShopItemSlots(PlayerItemData playerItemData)
+        {
+            if (_sellTab.ShopItemSlots.Count < playerItemData.InventoryItems.Count)
+            {
+                int slotsDifference = playerItemData.InventoryItems.Count - _sellTab.ShopItemSlots.Count;
+                InstantiateNewShopItemSlots(_sellTab.ShopItemSlots, _sellTab.ItemSlotContainer.transform, slotsDifference);
+            }
+
+            foreach (ShopItemSlot slot in _sellTab.ShopItemSlots)
+            {
+                slot.gameObject.SetActive(false);
+            }
+        }
+
+        private void SetupShopItemSlotsWithItemsAvailableForSelling(List<ShopItem> itemsAvailableForSelling)
+        {
+            int index = 0;
+
+            foreach (ShopItem item in itemsAvailableForSelling)
+            {
+                _sellTab.ShopItemSlots[index].SetupSlot(item, GetUsedItemPrice(item.Price));
+                _sellTab.ShopItemSlots[index].gameObject.SetActive(true);
+                index++;
+            }
         }
 
         private void HandleSlotClicked(ShopItemSlot slot)
@@ -102,31 +138,22 @@ namespace LittleSimPrototype.ShopSystem
             }
 
             ShopEvents.NotifyItemSold(slot.ShopItem, GetUsedItemPrice(slot.ShopItem.Price));
+            InventoryEvents.RequestPlayerItemData();
         }
 
         private void HandlePlayerItemDataResponse(PlayerItemData playerItemData)
         {
-            if (_sellTab.ShopItemSlots.Count < playerItemData.InventoryItems.Count)
+            PrepareSellTabShopItemSlots(playerItemData);
+
+            List<ShopItem> itemsAvailableForSelling = new();
+            itemsAvailableForSelling = _shop.ItemsBeingBought.Where(i => playerItemData.InventoryItems.Keys.Contains<Item>(i.Item)).ToList<ShopItem>();
+
+            if (itemsAvailableForSelling.Count == 0)
             {
-                int slotsDifference = _sellTab.ShopItemSlots.Count - playerItemData.InventoryItems.Count;
-                InstantiateNewShopItemSlots(_sellTab.ShopItemSlots, _sellTab.ItemSlotContainer.transform, slotsDifference);
+                return;
             }
 
-            foreach (ShopItemSlot slot in _sellTab.ShopItemSlots)
-            {
-                gameObject.SetActive(false);
-            }
-
-            List<ShopItem> itemsAvailableForSelling = _shop.ItemsBeingBought.Where(i => playerItemData.InventoryItems.Keys.Contains<Item>(i.Item)).ToList<ShopItem>();
-
-            int index = 0;
-
-            foreach(ShopItem item in itemsAvailableForSelling)
-            {
-                _sellTab.ShopItemSlots[index].SetupSlot(item, GetUsedItemPrice(item.Price));
-                _sellTab.ShopItemSlots[index].gameObject.SetActive(true);
-                index++;
-            }
+            SetupShopItemSlotsWithItemsAvailableForSelling(itemsAvailableForSelling);
         }
 
         private void HandleBuyTabButtonClick()
@@ -138,7 +165,9 @@ namespace LittleSimPrototype.ShopSystem
 
         private void HandleSellTabButtonClick()
         {
+            InventoryEvents.RequestPlayerItemData();
             _activeTab = _sellTab;
+
             _buyTab.gameObject.SetActive(false);
             _sellTab.gameObject.SetActive(true);
         }
