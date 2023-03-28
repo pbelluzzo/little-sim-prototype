@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0895633a1ce6fc409318af7ae14f54e, type: 3}
   m_Name: InventoryConfigs
   m_EditorClassIdentifier: 
-  StartingMoney: 100
+  StartingMoney: 500
   InventorySlots: 12

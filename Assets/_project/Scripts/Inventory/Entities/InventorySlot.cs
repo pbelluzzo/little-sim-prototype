@@ -11,15 +11,17 @@ namespace LittleSimPrototype.Inventory
         [SerializeField] private TextMeshProUGUI _quantityTMP;
         public string QuantityText { set => _quantityTMP.text = value; }
 
-        private Button _buttonComponent;
+        [SerializeField] private Button _buttonComponent;
         
-        private Item _equipedItem;
-        public Item EquipedItem { get => _equipedItem; }
+        private Item _slotItem;
+        public Item SlotItem { get => _slotItem; }
 
-
-        private void Start()
+        public void SetupSlot(Item item, int quantity)
         {
-            _buttonComponent= GetComponent<Button>();
+            _slotItem = item;
+            _itemImage.sprite = item.ItemImage;
+            _quantityTMP.text = quantity.ToString();
+            _buttonComponent.interactable = true;
         }
 
         public void RemoveItem()
@@ -27,14 +29,7 @@ namespace LittleSimPrototype.Inventory
             _itemImage.sprite = null;
             _buttonComponent.interactable = false;
             _quantityTMP.text = "";
-        }
-
-        public void SetupSlot(Item item, int quantity)
-        {
-            _equipedItem = item;
-            _itemImage.sprite = item.ItemImage;
-            _quantityTMP.text = quantity.ToString();
-            _buttonComponent.interactable = true;
+            _slotItem = null;
         }
     }
 }

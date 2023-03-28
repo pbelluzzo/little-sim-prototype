@@ -1,3 +1,4 @@
+using LittleSimPrototype.ShopSystem;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,12 +27,22 @@ namespace LittleSimPrototype.Inventory
             _money = _configs.StartingMoney;
         }
 
-        public ItemRequestResponse AddItem(Item item, int quantity)
+        private void OnEnable()
+        {
+            ShopEvents.OnItemBoughtEvent += HandleItemBought;
+        }
+
+        private void OnDisable()
+        {
+            ShopEvents.OnItemBoughtEvent -= HandleItemBought;
+        }
+
+        public ItemRequestResponse AddItem(Item item, int quantity = 1)
         {
             if (quantity <= 0)
             {
                 Debug.LogWarning("Couldn't add item. Invalid quantity :: " + quantity);
-                return null;
+                return new ItemRequestResponse(ItemRequestStatus.InvalidQuantity);
             }
 
             bool inventoryHasItem = _inventoryItems.ContainsKey(item);
@@ -98,6 +109,22 @@ namespace LittleSimPrototype.Inventory
             return response;
         }
 
+        private void HandleItemBought(ShopItem shopItem)
+        {
+            if (_money < shopItem.Price)
+            {
+                Debug.LogWarning("Not Enought Money");
+                return;
+            }
+
+            ItemRequestResponse response = AddItem(shopItem.Item);
+
+            if (response.RequestStatus == ItemRequestStatus.Success)
+            {
+                Debug.Log("Item Bought" + shopItem.Item.ItemName);
+                Money -= shopItem.Price;
+            }
+        }
 
     }
 }

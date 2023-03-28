@@ -19,5 +19,15 @@ namespace LittleSimPrototype.ShopSystem
 
         [SerializeField] private List<ShopItem> _itemsBoughtByThisShop = new();
         public List<ShopItem> ItemsBeingBought { get => _itemsBoughtByThisShop; }
+
+        public void SellItem(ShopItem item)
+        {
+
+        }
+
+        public void BuyItem(ShopItem item)
+        {
+
+        }
     }
 }

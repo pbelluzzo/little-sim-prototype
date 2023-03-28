@@ -1,7 +1,5 @@
 using LittleSimPrototype.InteractionSystem;
 using LittleSimPrototype.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LittleSimPrototype.ShopSystem
@@ -12,7 +10,7 @@ namespace LittleSimPrototype.ShopSystem
         [SerializeField] private GameObject _interactibleBaloon;
         [SerializeField] private Shop _shop;
 
-        private bool _isInteractible;
+        [SerializeField] private bool _isInteractible = default;
         public bool IsInteractible { get => _isInteractible; }
 
         private void Start()
@@ -22,16 +20,31 @@ namespace LittleSimPrototype.ShopSystem
 
         public void Highlight()
         {
+            if (!_isInteractible)
+            {
+                return; 
+            }
+
             _interactibleBaloon.SetActive(true);
         }
 
         public void EndHighlight()
         {
+            if (!_isInteractible)
+            {
+                return;
+            }
+
             _interactibleBaloon.SetActive(false);
         }
 
         public void Interact()
         {
+            if (!_isInteractible)
+            {
+                return;
+            }
+
             UINavigationManager.Instance.OpenScreen(_shopScreen);
         }
     }

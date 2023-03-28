@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemImage: {fileID: 5067517555436122605}
   _quantityTMP: {fileID: 5067517555182445592}
+  _buttonComponent: {fileID: 5067517556525803343}
 --- !u!114 &5067517556525803345
 MonoBehaviour:
   m_ObjectHideFlags: 0

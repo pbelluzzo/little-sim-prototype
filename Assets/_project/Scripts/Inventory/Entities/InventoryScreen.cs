@@ -12,23 +12,18 @@ namespace LittleSimPrototype.Inventory
         [SerializeField] private PlayerInventory _playerInventory;
 
         private List<InventorySlot> _inventorySlots = new();
-        private List<InventorySlot> _freeSlots = new();
+        private List<InventorySlot> _freeSlots;
+
+        private bool _isInitialized = false;
 
         private void Start()
         {
-            for (int i = 0; i < _playerInventory.Configs.InventorySlots; i++)
-            {
-                InventorySlot slot = Instantiate(_inventorySlotPrefab, _itemSlotsContainer.transform);
-                _inventorySlots.Add(slot);
-                _freeSlots.Add(slot);
-                slot.gameObject.SetActive(false);
-            }
+            SetupInventorySlots();
         }
 
         private void OnEnable()
         {
             InventoryEvents.OnItemUpdateEvent += HandleItemUpdate;
-            SetInventorySlots();
         }
 
         private void OnDisable()
@@ -36,9 +31,20 @@ namespace LittleSimPrototype.Inventory
             InventoryEvents.OnItemUpdateEvent -= HandleItemUpdate;
         }
 
-        private void SetInventorySlots()
+        public override void Enable()
         {
-            _freeSlots = _inventorySlots;
+            base.Enable();
+            SetupInventorySlots();
+        }
+
+        private void SetupInventorySlots()
+        {
+            if (!_isInitialized)
+            {
+                InitializeInventorySlots();
+            }
+
+            _freeSlots = new(_inventorySlots);
 
             int slotIndex = 0;
 
@@ -48,6 +54,18 @@ namespace LittleSimPrototype.Inventory
                 _freeSlots.Remove(_inventorySlots[slotIndex]);
                 slotIndex++;
             }
+        }
+
+        private void InitializeInventorySlots()
+        {
+            for (int i = 0; i < _playerInventory.Configs.InventorySlots; i++)
+            {
+                InventorySlot slot = Instantiate(_inventorySlotPrefab, _itemSlotsContainer.transform);
+                _inventorySlots.Add(slot);
+                slot.gameObject.SetActive(false);
+            }
+
+            _isInitialized = true;
         }
 
         private void AddItem(Item item, int quantity, InventorySlot slotWithItem)
@@ -78,7 +96,7 @@ namespace LittleSimPrototype.Inventory
         }
         private void HandleItemUpdate(Item item, int quantity)
         {
-            InventorySlot slotWithItem = _inventorySlots.Where(s => s.EquipedItem == item).FirstOrDefault();
+            InventorySlot slotWithItem = _inventorySlots.Where(s => s.SlotItem == item).FirstOrDefault();
 
             if (quantity <= 0)
             {
