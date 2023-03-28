@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace LittleSimPrototype.Inventory
@@ -14,6 +13,7 @@ namespace LittleSimPrototype.Inventory
             set
             {
                 _money = value >= 0 ? value : 0;
+                InventoryEvents.NotifyPlayerMoneyUpdate(_money);
             }
         }
 

@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 005a7618c3793a740bb10542d20c13aa, type: 3}
-  m_Name: dirty-shirt
+  m_Name: Blue Shirt
   m_EditorClassIdentifier: 
-  _itemImage: {fileID: 21300000, guid: 061dd30e1684f6a4d96517edbaddb059, type: 3}
-  _itemName: Dirty White T-Shirt
-  _itemDescription: It looks like it's time to replace this.
-  _assetLibraryLabel: dirty-shirt
+  _itemImage: {fileID: 21300000, guid: 8cf8d37ce45a68a4696ad84c13e43b06, type: 3}
+  _itemName: Blue T-Shirt
+  _itemDescription: 'A brand new blue T-shirt. '
+  _equipableSpriteList:
+  - _assetLibraryLabel: body1
+    _equipmentCategory: 0
+  - _assetLibraryLabel: armL1
+    _equipmentCategory: 1
+  - _assetLibraryLabel: armR1
+    _equipmentCategory: 2

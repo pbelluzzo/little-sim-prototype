@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 005a7618c3793a740bb10542d20c13aa, type: 3}
-  m_Name: RaglanShirt1
+  m_Script: {fileID: 11500000, guid: 3b6dc7ae4d9a6974ebd787bfd8f24752, type: 3}
+  m_Name: OldTShirt_SI
   m_EditorClassIdentifier: 
-  _itemImage: {fileID: 21300000, guid: ed8510b2cd9cb2b48acee354940514ba, type: 3}
-  _itemName: Raglan T-shirt
-  _itemDescription: Nice looking T-shirt
-  _assetLibraryLabel: shirt-raglan1
+  _item: {fileID: 11400000, guid: f1690d856263cdf4c9e8dd85b95424d0, type: 2}
+  _priceCurrency: $
+  _itemPrice: 1

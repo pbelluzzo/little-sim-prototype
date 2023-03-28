@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b6dc7ae4d9a6974ebd787bfd8f24752, type: 3}
-  m_Name: RaglanShirt1_SI
+  m_Name: RaglanT-Shirt_SI
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: d1068f63d3d986142b48edd098d28768, type: 2}
+  _item: {fileID: 11400000, guid: e477bd18471f5cb429f31afaf211155f, type: 2}
   _priceCurrency: $
-  _itemPrice: 14
+  _itemPrice: 15

@@ -5,7 +5,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 namespace LittleSimPrototype.ShopSystem
 {
@@ -41,6 +40,8 @@ namespace LittleSimPrototype.ShopSystem
 
             _buyTabButton.onClick.AddListener(HandleBuyTabButtonClick);
             _sellTabButton.onClick.AddListener(HandleSellTabButtonClick);
+
+            ChangeActiveTab(_buyTab);
         }
 
         public override void Disable()
@@ -98,11 +99,6 @@ namespace LittleSimPrototype.ShopSystem
             }
         }
 
-        private int GetUsedItemPrice(int price)
-        {
-            return Mathf.CeilToInt(price * _shop.PercentagePaidForBoughtItems);
-        }
-
         private void PrepareSellTabShopItemSlots(PlayerItemData playerItemData)
         {
             if (_sellTab.ShopItemSlots.Count < playerItemData.InventoryItems.Count)
@@ -123,10 +119,17 @@ namespace LittleSimPrototype.ShopSystem
 
             foreach (ShopItem item in itemsAvailableForSelling)
             {
-                _sellTab.ShopItemSlots[index].SetupSlot(item, GetUsedItemPrice(item.Price));
+                _sellTab.ShopItemSlots[index].SetupSlot(item, _shop.GetUsedItemPrice(item.Price));
                 _sellTab.ShopItemSlots[index].gameObject.SetActive(true);
                 index++;
             }
+        }
+
+        private void ChangeActiveTab(ShopScreenTab tab) 
+        {
+            _activeTab = tab;
+            _buyTab.gameObject.SetActive(_activeTab == _buyTab);
+            _sellTab.gameObject.SetActive(_activeTab == _sellTab);
         }
 
         private void HandleSlotClicked(ShopItemSlot slot)
@@ -137,7 +140,7 @@ namespace LittleSimPrototype.ShopSystem
                 return;
             }
 
-            ShopEvents.NotifyItemSold(slot.ShopItem, GetUsedItemPrice(slot.ShopItem.Price));
+            ShopEvents.NotifyItemSold(slot.ShopItem, _shop.GetUsedItemPrice(slot.ShopItem.Price));
             InventoryEvents.RequestPlayerItemData();
         }
 
@@ -158,18 +161,13 @@ namespace LittleSimPrototype.ShopSystem
 
         private void HandleBuyTabButtonClick()
         {
-            _activeTab = _buyTab;
-            _buyTab.gameObject.SetActive(true);
-            _sellTab.gameObject.SetActive(false);
+            ChangeActiveTab(_buyTab);
         }
 
         private void HandleSellTabButtonClick()
         {
             InventoryEvents.RequestPlayerItemData();
-            _activeTab = _sellTab;
-
-            _buyTab.gameObject.SetActive(false);
-            _sellTab.gameObject.SetActive(true);
+            ChangeActiveTab(_sellTab);
         }
     }
 }

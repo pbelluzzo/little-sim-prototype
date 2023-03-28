@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using LittleSimPrototype.UI;
+using TMPro;
 
 namespace LittleSimPrototype.Inventory
 {
@@ -10,6 +11,7 @@ namespace LittleSimPrototype.Inventory
         [SerializeField] private InventorySlot _inventorySlotPrefab;
         [SerializeField] private GameObject _itemSlotsContainer;
         [SerializeField] private PlayerInventory _playerInventory;
+        [SerializeField] private TextMeshProUGUI _moneyTMP;
 
         private List<InventorySlot> _inventorySlots = new();
         private List<InventorySlot> _freeSlots;
@@ -24,11 +26,13 @@ namespace LittleSimPrototype.Inventory
         private void OnEnable()
         {
             InventoryEvents.OnItemUpdateEvent += HandleItemUpdate;
+            InventoryEvents.OnPlayerMoneyUpdateEvent += HandlePlayerMoneyUpdate;
         }
 
         private void OnDisable()
         {
             InventoryEvents.OnItemUpdateEvent -= HandleItemUpdate;
+            InventoryEvents.OnPlayerMoneyUpdateEvent -= HandlePlayerMoneyUpdate;
         }
 
         public override void Enable()
@@ -105,6 +109,11 @@ namespace LittleSimPrototype.Inventory
             }
 
             AddItem(item, quantity, slotWithItem);
+        }
+
+        private void HandlePlayerMoneyUpdate(int money)
+        {
+            _moneyTMP.text = money.ToString() + ",00";
         }
     }
 }
